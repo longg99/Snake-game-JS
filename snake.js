@@ -4,6 +4,8 @@
 const canvas = document.getElementById("canvas");
 //game over section, hidden by default
 const gameOverDiv = document.getElementById("gameOver");
+//the header of the game
+const header = document.getElementById("header");
 //draw the ctx, set 2d since we are using 2d
 const ctx = canvas.getContext("2d");
 
@@ -27,7 +29,7 @@ let titleSize = (canvas.width / titleCount) - 2;
 //since we have 20 titles, the snake is 10 right and 10 down
 let headX = 10;
 let headY = 10;
-const snakeParts = [];
+let snakeParts = [];
 let length = 2;
 
 //to move the snake
@@ -46,6 +48,8 @@ let score = 0;
 function drawGame() {
     //show the canvas
     canvas.style.display = "block";
+    //show the header
+    header.style.display = "block";
     //hide the game over
     gameOverDiv.style.display = "none";
 
@@ -168,6 +172,11 @@ function isGameOver() {
 function showTryAgain() {
     //hide the canvas first
     canvas.style.display = "none";
+    //hide the header
+    header.style.display = "none";
+    //show the final score
+    document.getElementById("finalScore").innerHTML = "Oops! " +
+        "Your FINAL score is " + score +".";
     //show the try again btn
     gameOverDiv.style.display = "block";
     //point the try again button to the drawGame() function
@@ -178,6 +187,7 @@ function showTryAgain() {
     headY = 10;
     xVelo = 0;
     yVelo = 0; 
+    snakeParts = [];
 }
 
 //add an event listener for our key
