@@ -80,6 +80,7 @@ function drawGame() {
         pauseBtn.removeEventListener('click', pause);
     }
     //update the screen 3 times a second
+    if (!paused)
     setTimeout(drawGame, 1000 / speed);
 }
 
@@ -252,10 +253,13 @@ function pause() {
 function cont() {
     pauseBtn.innerHTML = "Pause";
     paused = false;
+    drawGame();
 }
 
 //run the game
 drawGame();
+
+
 
 
 
