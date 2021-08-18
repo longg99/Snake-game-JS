@@ -1,0 +1,23 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    flex-direction: column;
+}
+
+canvas {
+    box-shadow: black 20px 10px 50px;
+    background-color: grey;
+}
+
+#score {
+    font-size: 15px;
+}
+
+
+
