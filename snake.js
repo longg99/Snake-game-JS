@@ -151,7 +151,7 @@ function isGameOver() {
     if(gameOver) {
         ctx.fillStyle = "red";
         ctx.font = "50px Arial";
-        ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 6.5)
+        ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 6.5);
     }
 
     return gameOver;
