@@ -44,6 +44,11 @@ let score = 0;
 
 //game loop
 function drawGame() {
+    //show the canvas
+    canvas.display = "block";
+    //hide the game over
+    document.getElementById("gameOver").style.display = "none";
+
     //game logic
     changeSnakePosition();
     let result = isGameOver();
@@ -152,9 +157,19 @@ function isGameOver() {
         ctx.fillStyle = "red";
         ctx.font = "50px Arial";
         ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 6.5);
+        //show try again btn after 2 sec
+        setTimeout(showTryAgain, 1000);
     }
 
     return gameOver;
+}
+
+//show try again btn
+function showTryAgain() {
+    //hide the canvas first
+    canvas.style.display = "none";
+    //show the try again btn
+    document.getElementById("gameOver").style.display = "block";
 }
 
 //add an event listener for our key
