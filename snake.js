@@ -41,6 +41,9 @@ let appleY = 5;
 //score
 let score = 0;
 
+//pause
+let paused = false;
+pauseBtn = document.getElementById("pause");
 
 //game loop
 function drawGame() {
@@ -50,6 +53,7 @@ function drawGame() {
     header.style.display = "block";
     //hide the game over
     gameOverDiv.style.display = "none";
+    console.log(paused);
 
     //game logic
     changeSnakePosition();
@@ -64,7 +68,17 @@ function drawGame() {
     drawScore();
     drawApple();
     checkAppleCollision();
-    //changeSnakePosition();
+    //check for pause
+    //handle pause
+    if(!paused) {
+        pauseBtn.addEventListener('click', pause);
+        pauseBtn.removeEventListener('click', cont);
+    }
+    //handle continue
+    if(paused) {
+        pauseBtn.addEventListener('click', cont);
+        pauseBtn.removeEventListener('click', pause);
+    }
     //update the screen 3 times a second
     setTimeout(drawGame, 1000 / speed);
 }
@@ -180,6 +194,7 @@ function showTryAgain() {
     //point the try again button to the drawGame() function
     document.getElementById("tryAgain").addEventListener("click", drawGame);
     //reset the variables
+    paused = false;
     score = 0;
     headX = 10;
     headY = 10;
@@ -223,8 +238,26 @@ function keyDown(event) {
     }
 }
 
+
+
+//for pausing
+function pause() {
+    paused = true;
+    //change text to continue
+    pauseBtn.innerHTML = "Continue";
+}
+
+
+
+function cont() {
+    pauseBtn.innerHTML = "Pause";
+    paused = false;
+}
+
 //run the game
-drawGame()
+drawGame();
+
+
 
 
 
