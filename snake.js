@@ -1,5 +1,3 @@
-
-
 //get the canvas
 const canvas = document.getElementById("canvas");
 //game over section, hidden by default
@@ -57,7 +55,7 @@ function drawGame() {
     changeSnakePosition();
     let result = isGameOver();
     //if game over, stop the game
-    if(result) {
+    if (result) {
         return;
     }
 
@@ -73,14 +71,14 @@ function drawGame() {
 
 function clrScreen() {
     //fill canvas with color
-    ctx.fillStyle="grey";
+    ctx.fillStyle = "grey";
     //draw a filled rectangle covering the entire canvas
     //start with 0x and 0y, top right and top left
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function drawSnake() {
-    ctx.fillStyle="blue";
+    ctx.fillStyle = "blue";
     //draw our snake
     //one title is one part on the snake
     //as the rectangle
@@ -99,9 +97,9 @@ function drawSnake() {
 
     //as we draw more part, it shifts the elem at the end so the length will be maintained
     snakeParts.push(new snakePart(headX, headY));
-    
+
     //remove the furthers item from the snake part
-    if(snakeParts.length > length) {
+    if (snakeParts.length > length) {
         snakeParts.shift();
     }
 }
@@ -150,14 +148,14 @@ function isGameOver() {
     //else if the snake bites itself
     for (let i = 0; i < snakeParts.length; i++) {
         let part = snakeParts[i];
-        if(part.x == headX && part.y == headY) {
+        if (part.x == headX && part.y == headY) {
             gameOver = true;
             break;
         }
     }
 
     //if game over then show the user the game over text
-    if(gameOver) {
+    if (gameOver) {
         ctx.fillStyle = "red";
         ctx.font = "50px Arial";
         ctx.fillText("Game Over!", canvas.width / 6.5, canvas.height / 6.5);
@@ -176,7 +174,7 @@ function showTryAgain() {
     header.style.display = "none";
     //show the final score
     document.getElementById("finalScore").innerHTML = "Oops! " +
-        "Your FINAL score is " + score +".";
+        "Your FINAL score is " + score + ".";
     //show the try again btn
     gameOverDiv.style.display = "block";
     //point the try again button to the drawGame() function
@@ -186,7 +184,8 @@ function showTryAgain() {
     headX = 10;
     headY = 10;
     xVelo = 0;
-    yVelo = 0; 
+    yVelo = 0;
+    length = 2;
     snakeParts = [];
 }
 
@@ -196,29 +195,29 @@ document.body.addEventListener('keydown', keyDown);
 function keyDown(event) {
     //up
     //if moving up, we cannot move down
-    if(event.keyCode == 38) {
-        if(yVelo ==  1) return;
+    if (event.keyCode == 38) {
+        if (yVelo == 1) return;
         yVelo = -1;
         xVelo = 0;
     }
 
     //down
-    if(event.keyCode == 40) {
-        if(yVelo ==  -1) return;
+    if (event.keyCode == 40) {
+        if (yVelo == -1) return;
         yVelo = 1;
         xVelo = 0;
     }
 
     //left 
-    if(event.keyCode == 37) {
-        if(xVelo ==  1) return;
+    if (event.keyCode == 37) {
+        if (xVelo == 1) return;
         yVelo = 0;
         xVelo = -1;
     }
 
     //left 
-    if(event.keyCode == 39) {
-        if(xVelo ==  -1) return;
+    if (event.keyCode == 39) {
+        if (xVelo == -1) return;
         yVelo = 0;
         xVelo = 1;
     }
@@ -227,12 +226,5 @@ function keyDown(event) {
 //run the game
 drawGame()
 
-//to move the snake, simply pop tail and push to the head
-//to the right, snake + box, left: -box
 
-
-//eat food: add the new head without removing the tail
-
-//check game over: check if the snake's new head has the collision with its elem
-//in the array
 

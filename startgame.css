@@ -16,24 +16,7 @@ body {
     color: antiquewhite;
 }
 
-canvas {
-    box-shadow: black 20px 10px 50px;
-    background-color: grey;
-}
-
-#score {
-    font-size: 15px;
-    text-align: center;
-}
-
-#gameOver {
-    display: none;
-}
-
-#tryAgain {
+button {
     margin: 0 auto;
     display: block;
 }
-
-
-
