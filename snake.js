@@ -15,7 +15,7 @@ class snakePart {
     }
 }
 
-let speed = 10;
+let speed = 20;
 //we have 20 titles across the board and 20 down
 let titleCount = 20;
 
@@ -43,7 +43,10 @@ let score = 0;
 
 //pause
 let paused = false;
-pauseBtn = document.getElementById("pause");
+let pauseBtn = document.getElementById("pause");
+
+//pause and quit btn
+let btns = document.getElementById("buttons");
 
 //game loop
 function drawGame() {
@@ -51,9 +54,10 @@ function drawGame() {
     canvas.style.display = "block";
     //show the header
     header.style.display = "block";
+    //show pause and quit
+    btns.style.display = "flex";
     //hide the game over
     gameOverDiv.style.display = "none";
-    console.log(paused);
 
     //game logic
     changeSnakePosition();
@@ -187,6 +191,8 @@ function showTryAgain() {
     canvas.style.display = "none";
     //hide the header
     header.style.display = "none";
+    //hide the pause and quit btns
+    btns.style.display = "none";
     //show the final score
     document.getElementById("finalScore").innerHTML = "Oops! " +
         "Your FINAL score is " + score + ".";
