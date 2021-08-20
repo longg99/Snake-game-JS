@@ -32,8 +32,18 @@ canvas {
     display: block;
 }
 
-#pause {
-    display: inline-block;
-    font-size: 40px;
+#pause, #back {
+    font-size: 25px;
+    flex: 1 1 auto;
+    margin: 5px;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+a {
+    text-decoration: none;
 }
 

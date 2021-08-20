@@ -194,8 +194,14 @@ function showTryAgain() {
     gameOverDiv.style.display = "block";
     //point the try again button to the drawGame() function
     document.getElementById("tryAgain").addEventListener("click", drawGame);
+    reset(); //reset the game
+}
+
+//function for reset the game 
+function reset() {
     //reset the variables
     paused = false;
+    pauseBtn.innerHTML = "Pause";
     score = 0;
     headX = 10;
     headY = 10;
@@ -239,8 +245,6 @@ function keyDown(event) {
     }
 }
 
-
-
 //for pausing
 function pause() {
     paused = true;
@@ -248,12 +252,19 @@ function pause() {
     pauseBtn.innerHTML = "Continue";
 }
 
-
-
+//for continuing
 function cont() {
     pauseBtn.innerHTML = "Pause";
     paused = false;
     drawGame();
+}
+
+//handle quit game logic
+function quit() {
+    if(confirm("Are you sure you want to give up?")){
+        reset(); //reset the game first
+        window.location.replace("index.html");
+    }
 }
 
 //run the game
