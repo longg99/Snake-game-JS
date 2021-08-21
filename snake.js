@@ -15,7 +15,7 @@ class snakePart {
     }
 }
 
-let speed = 20;
+let speed = 10;
 //we have 20 titles across the board and 20 down
 let titleCount = 20;
 
@@ -29,6 +29,7 @@ let headX = 10;
 let headY = 10;
 let snakeParts = [];
 let length = 2;
+let lives = 1;
 
 //to move the snake
 let xVelo = 0;
@@ -61,31 +62,33 @@ function drawGame() {
 
     //game logic
     changeSnakePosition();
+
     let result = isGameOver();
     //if game over, stop the game
     if (result) {
         return;
     }
 
+    drawScore();
     clrScreen();
     drawSnake();
-    drawScore();
+
     drawApple();
     checkAppleCollision();
     //check for pause
     //handle pause
-    if(!paused) {
+    if (!paused) {
         pauseBtn.addEventListener('click', pause);
         pauseBtn.removeEventListener('click', cont);
     }
     //handle continue
-    if(paused) {
+    if (paused) {
         pauseBtn.addEventListener('click', cont);
         pauseBtn.removeEventListener('click', pause);
     }
     //update the screen 3 times a second
     if (!paused)
-    setTimeout(drawGame, 1000 / speed);
+        setTimeout(drawGame, 1000 / speed);
 }
 
 function clrScreen() {
@@ -125,7 +128,7 @@ function drawSnake() {
 
 //update the score to the elem with has id of score
 function drawScore() {
-    document.getElementById("score").innerHTML = "Score: " + score;
+    document.getElementById("score").innerHTML = "Score: " + score + " | Live(s): " + lives;
 }
 
 
@@ -151,6 +154,7 @@ function drawApple() {
     ctx.fillRect(appleX * titleCount, appleY * titleCount, titleSize, titleSize);
 }
 
+//to check if the game is over using lives logic
 function isGameOver() {
     let gameOver = false;
 
@@ -158,21 +162,14 @@ function isGameOver() {
     //or we have a velocity
     if (xVelo == 0 && yVelo == 0) return false;
 
-    //if we reached the boundaries then game over
-    if (headX < 0) gameOver = true;
-    else if (headX == titleCount) gameOver = true;
-    else if (headY < 0) gameOver = true;
-    else if (headY == titleCount) gameOver = true;
+    //check for Collision
+    checkCollision();
 
-    //else if the snake bites itself
-    for (let i = 0; i < snakeParts.length; i++) {
-        let part = snakeParts[i];
-        if (part.x == headX && part.y == headY) {
-            gameOver = true;
-            break;
-        }
+    //if no lives left then the game is over
+    if (lives <= 0) {
+        gameOver = true;
+        drawScore(); //show the score and lives one last time
     }
-
     //if game over then show the user the game over text
     if (gameOver) {
         ctx.fillStyle = "red";
@@ -183,6 +180,43 @@ function isGameOver() {
     }
 
     return gameOver;
+}
+
+//check if the snake collides with walls or itself
+//for every time the snake collides, we reset 
+//its position to the default position
+//by setting headX and Y equal to 10
+function checkCollision() {
+    if (headX < 0) {
+        lives--;
+        headX = 10;
+        headY = 10;
+    }
+    else if (headX == titleCount) {
+        lives--;
+        headX = 10;
+        headY = 10;
+    }
+    else if (headY < 0) {
+        lives--;
+        headX = 10;
+        headY = 10;
+    }
+    else if (headY == titleCount) {
+        lives--;
+        headX = 10;
+        headY = 10;
+    }
+    //else if the snake bites itself
+    for (let i = 0; i < snakeParts.length; i++) {
+        let part = snakeParts[i];
+        if (part.x == headX && part.y == headY) {
+            lives--;
+            headX = 10;
+            headY = 10;
+            break;
+        }
+    }
 }
 
 //show try again btn
@@ -209,6 +243,7 @@ function reset() {
     paused = false;
     pauseBtn.innerHTML = "Pause";
     score = 0;
+    lives = 2;
     headX = 10;
     headY = 10;
     xVelo = 0;
@@ -260,14 +295,17 @@ function pause() {
 
 //for continuing
 function cont() {
+    //change the pause btn back to pause
     pauseBtn.innerHTML = "Pause";
+    //unpause
     paused = false;
+    //continue to run the game
     drawGame();
 }
 
 //handle quit game logic
 function quit() {
-    if(confirm("Are you sure you want to give up?")){
+    if (confirm("Are you sure you want to give up?")) {
         reset(); //reset the game first
         window.location.replace("index.html");
     }
