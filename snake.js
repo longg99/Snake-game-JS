@@ -15,7 +15,13 @@ class snakePart {
     }
 }
 
-let speed = 10;
+//now we will read the properties from the JSON String 
+//stored in the local storage
+//parse to JSON Objs first, and merge them together
+let preferences = JSON.parse(localStorage.getItem("preferences"));
+
+//set the speed of the game
+let speed = parseInt(preferences[0]["value"]);
 //we have 20 titles across the board and 20 down
 let titleCount = 20;
 
@@ -29,7 +35,9 @@ let headX = 10;
 let headY = 10;
 let snakeParts = [];
 let length = 2;
-let lives = 1;
+
+//set the lives of the snake
+let lives = parseInt(preferences[1]["value"]);
 
 //to move the snake
 let xVelo = 0;
@@ -60,6 +68,8 @@ function drawGame() {
     //hide the game over
     gameOverDiv.style.display = "none";
 
+    console.log(snakeParts.length)
+    console.log(snakeParts)
     //game logic
     changeSnakePosition();
 
@@ -93,14 +103,15 @@ function drawGame() {
 
 function clrScreen() {
     //fill canvas with color
-    ctx.fillStyle = "grey";
+    //get the color from user's preferences
+    ctx.fillStyle = preferences[2]["value"];
     //draw a filled rectangle covering the entire canvas
     //start with 0x and 0y, top right and top left
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
 
 function drawSnake() {
-    ctx.fillStyle = "blue";
+    ctx.fillStyle = preferences[3]["value"];
     //draw our snake
     //one title is one part on the snake
     //as the rectangle
@@ -108,7 +119,7 @@ function drawSnake() {
 
     for (let i = 0; i < snakeParts.length; i++) {
         let part = snakeParts[i];
-        ctx.fillStyle = "blue";
+        ctx.fillStyle = preferences[3]["value"];
         //change the size
         ctx.fillRect(part.x * titleCount, part.y * titleCount, titleSize, titleSize)
     }
@@ -149,7 +160,7 @@ function checkAppleCollision() {
 }
 
 function drawApple() {
-    ctx.fillStyle = "red";
+    ctx.fillStyle = preferences[4]["value"];
     //fill apple same as snake
     ctx.fillRect(appleX * titleCount, appleY * titleCount, titleSize, titleSize);
 }
@@ -243,7 +254,7 @@ function reset() {
     paused = false;
     pauseBtn.innerHTML = "Pause";
     score = 0;
-    lives = 2;
+    lives = preferences[1]["value"];
     headX = 10;
     headY = 10;
     xVelo = 0;
