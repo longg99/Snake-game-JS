@@ -20,6 +20,18 @@ class snakePart {
 //parse to JSON Objs first, and merge them together
 let preferences = JSON.parse(localStorage.getItem("preferences"));
 
+//load default settings if the JSON object is null
+//we will create a JSON obj here
+if (preferences == null) {
+    preferences = [
+        {name: "speed", value: "10"},
+        {name: "lives", value: "1"},
+        {name: "bColor", value: "#000000"},
+        {name: "sColor", value: "#ffffff"},
+        {name: "fColor", value: "#ff0000"}
+    ]
+}
+
 //set the speed of the game
 let speed = parseInt(preferences[0]["value"]);
 //we have 20 titles across the board and 20 down
@@ -68,8 +80,7 @@ function drawGame() {
     //hide the game over
     gameOverDiv.style.display = "none";
 
-    console.log(snakeParts.length)
-    console.log(snakeParts)
+    console.log(preferences)
     //game logic
     changeSnakePosition();
 
@@ -202,21 +213,29 @@ function checkCollision() {
         lives--;
         headX = 10;
         headY = 10;
+        xVelo = 0;
+        yVelo = 0;
     }
     else if (headX == titleCount) {
         lives--;
         headX = 10;
         headY = 10;
+        xVelo = 0;
+        yVelo = 0;
     }
     else if (headY < 0) {
         lives--;
         headX = 10;
         headY = 10;
+        xVelo = 0;
+        yVelo = 0;
     }
     else if (headY == titleCount) {
         lives--;
         headX = 10;
         headY = 10;
+        xVelo = 0;
+        yVelo = 0;
     }
     //else if the snake bites itself
     for (let i = 0; i < snakeParts.length; i++) {
