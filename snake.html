@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Snake Game!</title>
+    <link rel="stylesheet" href="snake.css" />
+  </head>
 
-    <head>
-        <title>Snake Game!</title>
-        <link rel="stylesheet" href="snake.css" />
-    </head>
+  <body>
+    <div id="header">
+      <h1>Snake Game!</h1>
+      <p id="score">Score: 0 | Lives: 1</p>
+    </div>
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <div id="gameOver">
+      <h2 id="finalScore"></h2>
+      <button type="button" class="tryAgain" id="tryAgain">TRY AGAIN!</button>
+      <br />
+      <button
+        type="button"
+        class="tryAgain"
+        onclick="window.location.href='index.html'"
+      >
+        I give up now :(
+      </button>
+    </div>
+    <br /><br />
+    <div id="buttons">
+      <button type="button" id="pause">Pause</button>
+      <br />
+      <button type="button" id="back" onclick="quit()">I give up!</button>
+    </div>
 
-    <body>
-        <div id="header">
-            <h1>Snake Game!</h1>
-            <p id="score">Score: 0 | Lives: 1</p>
-        </div>
-        <canvas id="canvas" width="400" height="400"></canvas>
-        <div id="gameOver">
-            <h2 id="finalScore"></h2>
-            <button type="button" class="tryAgain" id="tryAgain">TRY AGAIN!</button>
-            <br>
-            <button type="button" class="tryAgain"
-                onclick="window.location.href='index.html'">I give up now :(</button>
-        </div>
-        <br><br>
-        <div id="buttons">
-            <button type="button" id="pause">Pause</button>
-            <br>
-            <button type="button" id="back" onclick="quit()">I give up!</button>
-        </div>
-        
-        <script type="text/javascript" src="snake.js"></script>
-    </body>
-
+    <script type="text/javascript" src="snake.js"></script>
+  </body>
 </html>

@@ -1,45 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Settings</title>
-        <link rel="stylesheet" href="settings.css" />
-    </head>
-    <body>
-        <form id="pref">
-            <h1>Settings</h1>
-            <fieldset>
-                <legend>Game</legend>
-                <div class="group">
-                    <label for="range">Speed: </label>
-                    <input type="number" min="4" max="20" value="10" id="speed" 
-                        name="speed">
-                </div>
-                <div class="group">
-                    <label for="lives">Lives: </label>
-                    <input type="number" min="1" value="1" id="lives" name="lives">
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Theme</legend>
-                <div class="group">
-                    <label for="bColor">Background color: </label>
-                    <input type="color" value="#000000" id="bColor" name="bColor">
-                </div>
-                <div class="group">
-                    <label for="sColor">Snake color: </label>
-                    <input type="color" value="#FFFFFF" id="sColor" name="sColor">
-                </div>
-                <div class="group">
-                    <label for="fColor">Food color: </label>
-                    <input type="color" value="#FF0000" id="fColor" name="fColor">
-                </div>
-            </fieldset>
-            <div id="btns">
-                <input type="submit" value="Apply">
-                <input type="reset">
-            </div>
-        </form>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="settings.js" type="text/javascript"></script>
-    </body>
-<body>
+  <head>
+    <title>Settings</title>
+    <link rel="stylesheet" href="settings.css" />
+  </head>
+  <body>
+    <form id="pref">
+      <h1>Settings</h1>
+      <fieldset>
+        <legend>Game</legend>
+        <div class="group">
+          <label for="range">Speed: </label>
+          <input
+            type="number"
+            min="4"
+            max="20"
+            value="10"
+            id="speed"
+            name="speed"
+          />
+        </div>
+        <div class="group">
+          <label for="lives">Lives: </label>
+          <input type="number" min="1" value="1" id="lives" name="lives" />
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Theme</legend>
+        <div class="group">
+          <label for="bColor">Background color: </label>
+          <input type="color" value="#000000" id="bColor" name="bColor" />
+        </div>
+        <div class="group">
+          <label for="sColor">Snake color: </label>
+          <input type="color" value="#FFFFFF" id="sColor" name="sColor" />
+        </div>
+        <div class="group">
+          <label for="fColor">Food color: </label>
+          <input type="color" value="#FF0000" id="fColor" name="fColor" />
+        </div>
+      </fieldset>
+      <div id="btns">
+        <input type="submit" value="Apply" />
+        <input type="reset" />
+      </div>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="settings.js" type="text/javascript"></script>
+  </body>
+  <body></body>
+</html>

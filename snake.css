@@ -1,54 +1,54 @@
 body {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    margin: 0;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    flex-direction: column;
-    font-family: 'Segoe UI', Tahoma, Verdana, sans-serif;
-    font-size: 16px;
-    color: black;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  flex-direction: column;
+  font-family: "Segoe UI", Tahoma, Verdana, sans-serif;
+  font-size: 16px;
+  color: black;
 }
 
 canvas {
-    box-shadow: black 20px 10px 50px;
-    background-color: grey;
+  box-shadow: black 20px 10px 50px;
+  background-color: grey;
 }
 
 #score {
-    font-size: 20px;
-    text-align: center;
+  font-size: 20px;
+  text-align: center;
 }
 
 #gameOver {
-    display: none;
-    font-size: 20px;
+  display: none;
+  font-size: 20px;
 }
 
-#gameOver>button {
-    font-size: 20px;
+#gameOver > button {
+  font-size: 20px;
 }
 
 .tryAgain {
-    margin: 0 auto;
-    display: block;
+  margin: 0 auto;
+  display: block;
 }
 
-#pause, #back {
-    font-size: 25px;
-    flex: 1 1 auto;
-    margin: 5px;
+#pause,
+#back {
+  font-size: 25px;
+  flex: 1 1 auto;
+  margin: 5px;
 }
 
 #buttons {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: row;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
-
